@@ -1,5 +1,6 @@
 #include "card.hpp"
 #include "deck.hpp"
+#include "player.hpp"
 #include <iostream>
 #include <string>
 

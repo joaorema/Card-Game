@@ -1,4 +1,5 @@
 #include "card.hpp"
+#include "player.hpp"
 
 
 //Constructors
