@@ -5,6 +5,8 @@
 #include "card.hpp"
 #include <string>
 
+class Player;
+
 class Deck
 {
     private:
@@ -22,7 +24,7 @@ class Deck
         void shuffle();                                 //shuffle the deck
         int size() const;                               //how many cards left
 
-        Card dealCards();                               //
+        void dealCards(std::vector<Player>& players);                               //
 };
 
 

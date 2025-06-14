@@ -7,6 +7,7 @@ SRC = src/main.cpp   \
 	  src/card.cpp   \
 	  src/deck.cpp   \
 	  src/player.cpp \
+	  src/menu.cpp   \
 
 all: $(TARGET)
 

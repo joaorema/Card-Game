@@ -25,8 +25,13 @@ class Card
         Card();
         Card(int number, Suit type);                                 
         ~Card();
-        Card(const Card &other);                //copy contructor for card
-        Card(Card&& other) noexcept;            //move contructor for card
+
+
+        Card(const Card &other) = default;       //copy contructor for card
+        Card(Card&& other) = default;            //move contructor for card
+        Card& operator=(const Card&) = default;
+        Card& operator=(Card&&) = default;
+        
 
         //Getters and setters
         Suit getType() const;

@@ -20,16 +20,12 @@ Card::Card(int number, Suit type) : _number(number), _type(type)
     //std::cout << "Created a card " << std::endl; 
 }
 
-Card::Card(const Card &other) : _number(other._number), _type(other._type)
-{
-    //std::cout << "Copying card" << std::endl;
-}
-
+/*
 Card::Card(Card&& other) noexcept : _number(other._number), _type(other._type)
 {
     //std::cout << "Moving card" << std::endl;
 }
-
+*/
 //getters and setters
 
 

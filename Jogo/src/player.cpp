@@ -17,6 +17,19 @@ std::string roleToString(Role role)
     }
 }
 
+std::string suitToString1(Suit suit) 
+{
+    switch (suit) 
+    {
+        case Suit::Hearts:   return "Hearts";
+        case Suit::Diamonds: return "Diamonds";
+        case Suit::Clubs:    return "Clubs";
+        case Suit::Spades:   return "Spades";
+        case Suit::Joker:    return "Joker";
+        default:             return "Unknown";
+    }
+}
+
 
 Player::Player() {}
 
@@ -46,6 +59,28 @@ Role Player::getRole()const
     return _role;
 }
 
+int Player::getHandSize()const
+{
+    return _Hand.size();
+}
+
+std::vector<int> Player::getCardNbr()const
+{
+    std::vector<int>nbr;
+    for(const auto& card : _Hand)
+        nbr.push_back(card.getNumber());
+    return nbr;
+}
+
+std::vector<std::string> Player::getCardDescription()const
+{
+    std::vector<std::string> descriptions;
+    for (const auto& card : _Hand)
+    {
+        descriptions.push_back(std::to_string(card.getNumber()) + " " + suitToString1(card.getType()));
+    }
+    return descriptions; 
+}
 //setters
 
 void Player::setRole(Role role)
@@ -61,6 +96,11 @@ void Player::setName(std::string name)
 void Player::setId(int id)
 {
     this->_id = id;
+}
+
+void Player::addCard(const Card& card)
+{
+    _Hand.push_back(card);
 }
 
 void Player::annouce()

@@ -3,6 +3,7 @@
 
 #include "card.hpp"
 #include "deck.hpp"
+#include "player.hpp"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -35,12 +36,16 @@ class Player
         int getId()const;
         const std::string& getName()const;
         Role getRole()const;
+        int getHandSize() const;
+        std::vector<int>getCardNbr()const;
+        std::vector<std::string> getCardDescription() const;
 
         //setters
         
         void setRole(Role role);
         void setName(std::string name);
         void setId(int id);
+        void addCard(const Card& card);
 
         //others
 
