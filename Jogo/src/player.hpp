@@ -39,6 +39,7 @@ class Player
         int getHandSize() const;
         std::vector<int>getCardNbr()const;
         std::vector<std::string> getCardDescription() const;
+        const std::vector<Card>& getHand()const;
 
         //setters
         

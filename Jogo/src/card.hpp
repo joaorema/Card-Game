@@ -6,10 +6,10 @@
 
 enum class Suit
 {
-    Hearts,
-    Diamonds,
-    Clubs,
-    Spades,
+    Heart,
+    Diamond,
+    Club,
+    Spade,
     Joker
 };
 

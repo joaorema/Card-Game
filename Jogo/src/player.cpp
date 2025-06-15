@@ -21,10 +21,10 @@ std::string suitToString1(Suit suit)
 {
     switch (suit) 
     {
-        case Suit::Hearts:   return "Hearts";
-        case Suit::Diamonds: return "Diamonds";
-        case Suit::Clubs:    return "Clubs";
-        case Suit::Spades:   return "Spades";
+        case Suit::Heart:   return "Heart";
+        case Suit::Diamond: return "Diamond";
+        case Suit::Club:    return "Club";
+        case Suit::Spade:   return "Spade";
         case Suit::Joker:    return "Joker";
         default:             return "Unknown";
     }
@@ -81,6 +81,12 @@ std::vector<std::string> Player::getCardDescription()const
     }
     return descriptions; 
 }
+
+const std::vector<Card>& Player::getHand()const
+{
+    return _Hand;
+}
+
 //setters
 
 void Player::setRole(Role role)

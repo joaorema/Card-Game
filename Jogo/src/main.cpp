@@ -3,9 +3,33 @@
 #include "deck.hpp"
 #include "player.hpp"
 #include "menu.hpp"
+#include "cardTexture.hpp"
+
+std::string suitToString3(Suit suit) 
+{
+    switch (suit) 
+    {
+        case Suit::Heart:   return "heart";
+        case Suit::Diamond: return "diamond";
+        case Suit::Club:    return "club";
+        case Suit::Spade:   return "spade";
+        case Suit::Joker:    return "joker";
+        default:             return "Unknown";
+    }
+}
+
+
 
 int main()
 {
+    //loading cards images
+    CardTexture cardtextures;
+    if(!cardtextures.loadall())
+    {
+        std::cerr << "Failed to load images!" << std::endl;
+        return -1;
+    }
+
     //setting the window
     sf::RenderWindow window;
     window.create(sf::VideoMode(1000,550),"Test");                   //Creates Window for game
@@ -24,8 +48,10 @@ int main()
     //Create menu
     bool inMenu = true;
     bool gameStarted = false;
+    sf::Sprite cardSprite;
     auto [tittle, start, options, htp, howToPlay] = start_menu(font);
-   
+    
+
     //starting deck
     Deck deck(1);
 
@@ -46,7 +72,7 @@ int main()
         {
             if(end.type == sf::Event::Closed)                       //if we click on x on top
             window.close();
-            if(end.type == sf::Event::MouseButtonPressed)
+            if(end.type == sf::Event::MouseButtonPressed)           //if we click on start game
             {
                 sf::Vector2i mousePos;
                 mousePos = sf::Mouse::getPosition(window);
@@ -74,11 +100,21 @@ int main()
             {
                 deck.shuffle();
                 deck.dealCards(players);
-                auto cardDescriptions = players[0].getCardDescription();
-                for(const auto& desc : cardDescriptions)
-                    std::cout << desc << std::endl;
                 gameStarted = true;
             }
+            const auto& hand = players[0].getHand(); 
+            float startX = 100.0f;                                              // Starting x position
+            float y = 400.0f;                                                   // y position for all cards
+
+            for (size_t i = 0; i < hand.size(); ++i)
+            {
+                const Card& card = hand[i];
+                std::string key = suitToString3(card.getType()) + "_" + std::to_string(card.getNumber());
+                sf::Sprite cardSprite(cardtextures.getTexture(key));
+                cardSprite.setPosition(startX + i * 50.0f, y); // 40 pixels apart
+                window.draw(cardSprite);
+            }
+
         }
         window.display();
         

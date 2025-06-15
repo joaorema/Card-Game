@@ -53,11 +53,11 @@ std::string suitToString(Suit suit)
 {
     switch (suit) 
     {
-        case Suit::Hearts:   return "Hearts";
-        case Suit::Diamonds: return "Diamonds";
-        case Suit::Clubs:    return "Clubs";
-        case Suit::Spades:   return "Spades";
-        case Suit::Joker:    return "Joker";
+        case Suit::Heart:   return "Heart";
+        case Suit::Diamond: return "Diamond";
+        case Suit::Club:    return "Club";
+        case Suit::Spade:   return "Spade";
+        case Suit::Joker:    return "Joke";
         default:             return "Unknown";
     }
 }
